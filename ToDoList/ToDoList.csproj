@@ -224,6 +224,7 @@
     <Compile Include="ViewModels\TaskIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-flatly.css" />
     <Content Include="Content\bootstrap-minty.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

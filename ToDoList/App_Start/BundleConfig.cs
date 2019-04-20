@@ -23,7 +23,7 @@ namespace ToDoList
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-minty.css",
+                      "~/Content/bootstrap-flatly.css",
                       "~/Content/site.css"));
         }
     }
