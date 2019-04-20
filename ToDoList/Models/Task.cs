@@ -27,10 +27,15 @@ namespace ToDoList.Models
         [Display(Name = "Created")]
         public DateTime RecordCreated { get; set; }
 
+        public List<TaskUpdate> TaskUpdateList { get; set; }
+
+        public int UserId { get; set; }
+
         public Task()
         {
             IsTaskComplete = false;
             RecordCreated = DateTime.Now;
+            TaskUpdateList = new List<TaskUpdate>();
         }
     }
 }
