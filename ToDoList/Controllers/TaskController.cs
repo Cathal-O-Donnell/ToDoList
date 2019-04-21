@@ -25,8 +25,15 @@ namespace ToDoList.Controllers
         // GET: Task
         public ActionResult Index()
         {
+            List<Task> taskList = new List<Task>();
+
+            taskList = DBContext.Tasks.ToList();
+
             // Get list of tasks for the current user            
-            TaskIndexViewModel viewModel = new TaskIndexViewModel();
+            TaskIndexViewModel viewModel = new TaskIndexViewModel()
+            {
+                TaskList = taskList
+            };
 
             return View(viewModel);
         }
@@ -39,6 +46,11 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult New(Task newTask)
         {
+            newTask.UserId = -1;
+
+            DBContext.Tasks.Add(newTask);
+            DBContext.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
