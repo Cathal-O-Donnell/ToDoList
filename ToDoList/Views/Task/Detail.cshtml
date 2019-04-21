@@ -63,7 +63,7 @@
                                     <td>@(i + 1)</td>
                                     <td>@Model.TaskUpdateList.ElementAt(i).UpdateText</td>
                                     <td>@Model.TaskUpdateList.ElementAt(i).RecordCreated.ToString("dd/MM/yyyy")</td>
-                                    <td><span class="btn btn-danger" onclick="DeleteTaskUpdate(@Model.TaskUpdateList.ElementAt(i).Id)">Delete</span></td>
+                                    <td><span class="btn btn-danger" onclick="ConfirmDeleteTaskUpdate(@Model.TaskUpdateList.ElementAt(i).Id)">Delete</span></td>
                                     <td>@Html.ActionLink("Edit", "EditTaskUpdate", new { id = Model.TaskUpdateList.ElementAt(i).Id })</td>
                                 </tr>
                             }
@@ -79,6 +79,31 @@
     </div>
 </div>
 
+<input id="hfTaskUpdateToDelete" type="hidden" value="-1"/>
+
+@* Delete Task Update confirmation modal *@
+<div id='DeleteTaskUpdateConfirmationModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-modal">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-white" id="myModalBtnTruckLabel">Delete Confirmation</h4>
+            </div>
+
+            <div class="modal-body">
+                <p class="text-center">Are you sure you want to delete this task update?</p>
+
+                <p class="text-danger text-center">This cannot be undone</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+
+                <span class="btn btn-warning" onclick="DeleteTaskUpdate()">Confirm</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 
@@ -96,14 +121,20 @@
         });
     }
 
-    function DeleteTaskUpdate(taskUpdateId) {
+    function ConfirmDeleteTaskUpdate(taskUpdateId) {
+        $('#hfTaskUpdateToDelete').val(taskUpdateId);
+        
+        $('#DeleteTaskUpdateConfirmationModal').modal('show');
+    }
+
+    function DeleteTaskUpdate() {
+        var taskUpdateId = $('#hfTaskUpdateToDelete').val();
+
         $.ajax({
             type: "POST",
             url: '@Url.Action("DeleteTaskUpdate", "Task")',
             data: { taskUpdateId: taskUpdateId },
             success: function () {
-                console.log('task update successfully deleted');
-
                 window.location.reload();
             }
         });

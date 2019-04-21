@@ -57,7 +57,7 @@
                             }
                         </td>
 
-                        <td><span class="btn btn-danger" onclick="DeleteTask(@Model.TaskList.ElementAt(i).Id)">Delete</span></td>
+                        <td><span class="btn btn-danger" onclick="ConfirmDeleteTask(@Model.TaskList.ElementAt(i).Id)">Delete</span></td>
 
                         <td>@Html.ActionLink("Edit", "Edit", new { id = Model.TaskList.ElementAt(i).Id, @class = "btn btn-info" })</td>
 
@@ -73,9 +73,56 @@ else
     <h4 class="text-center">Add new taks to see them listed here!</h4>
 }
 
+<input id="hfTaskToDelete" type="hidden" value="-1" />
+
+@* Delete Task confirmation modal *@
+<div id='DeleteTaskConfirmationModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-modal">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-white" id="myModalBtnTruckLabel">Delete Confirmation</h4>
+            </div>
+
+            <div class="modal-body">
+                <p class="text-center">Are you sure you want to delete this task?</p>
+
+                <p class="text-danger text-center">This cannot be undone</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+
+                <span class="btn btn-warning" onclick="DeleteTask()">Confirm</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 
-    function DeleteTask(taskId) {
+    function ConfirmDeleteTask(taskUpdateId) {
+        $('#hfTaskToDelete').val(taskUpdateId);
+
+        $('#DeleteTaskConfirmationModal').modal('show');
+    }
+
+    function DeleteTask() {
+        var taskId = $('#hfTaskToDelete').val();
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("DeleteTask", "Task")',
+            data: { taskId: taskId },
+            success: function () {
+                console.log('task successfully deleted');
+
+                window.location.reload();
+            }
+        });
+    }
+
+    function DeleteTaskOLD(taskId) {
         $.ajax({
             type: "POST",
             url: '@Url.Action("DeleteTask", "Task")',
