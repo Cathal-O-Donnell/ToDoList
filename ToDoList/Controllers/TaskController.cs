@@ -29,23 +29,22 @@ namespace ToDoList.Controllers
             DBContext.Dispose();
         }
 
-        public int UserId
+        public string UserGuid
         {
             get
             {
-                string userId = User.Identity.GetUserId();
+                string userGuid = User.Identity.GetUserId();
 
-                if (!String.IsNullOrEmpty(userId))
-                    return Convert.ToInt32(userId);
+                if (!String.IsNullOrEmpty(userGuid))
+                    return userGuid;
                 else
-                    return -1;
+                    return "";
             }
         }
 
         public ActionResult Index()
         {
-            int userId = Convert.ToInt32(User.Identity.GetUserId());
-            List<Task> taskList = taskService.GetTasksByUser(UserId);
+            List<Task> taskList = taskService.GetTasksByUser(UserGuid);
 
             // Get list of tasks for the current user            
             TaskIndexViewModel viewModel = new TaskIndexViewModel()
@@ -91,7 +90,7 @@ namespace ToDoList.Controllers
             if (!ModelState.IsValid)            
                 return View("New", newTask);            
 
-            newTask.UserId = UserId;
+            newTask.UserGuid = UserGuid;
 
             taskService.AddTask(newTask);
 

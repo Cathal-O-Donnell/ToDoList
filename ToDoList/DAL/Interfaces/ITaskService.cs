@@ -16,7 +16,7 @@ namespace ToDoList.DAL.Interfaces
 
         void DeleteTaskUpdate(TaskUpdate taskUpdate);
 
-        List<Task> GetTasksByUser(int userId);
+        List<Task> GetTasksByUser(string userGuid);
 
         Task GetTask(int id);
 

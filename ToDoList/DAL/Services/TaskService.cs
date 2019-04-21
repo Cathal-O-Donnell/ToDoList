@@ -62,14 +62,15 @@ namespace ToDoList.DAL.Services
             return task;
         }
 
-        public List<Task> GetTasksByUser(int userId)
+        public List<Task> GetTasksByUser(string userGuid)
         {
-            List<Task> taskList = DBContext.Tasks.Where(t => t.UserId == userId).ToList();
+            List<Task> taskList = DBContext.Tasks.Where(t => t.UserGuid == userGuid).ToList();
 
             foreach (var task in taskList)
             {
                 task.TaskUpdateList = DBContext.TaskUpdates.Where(tu => tu.TaskId == task.Id).ToList();
             }
+
             return taskList;
         }
 

@@ -29,7 +29,7 @@ namespace ToDoList.Models
 
         public List<TaskUpdate> TaskUpdateList { get; set; }
 
-        public int UserId { get; set; }
+        public string UserGuid { get; set; }
 
         public Task()
         {

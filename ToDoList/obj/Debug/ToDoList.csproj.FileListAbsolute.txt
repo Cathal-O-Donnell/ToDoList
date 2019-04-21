@@ -122,5 +122,5 @@ C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.Gen
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.TaskUserId.resources
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.TaskUpdateListinTaskModel.resources
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.ModelChanges.resources
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csprojAssemblyReference.cache
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.TaskUpdateModelChanges.resources
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.UserGuid.resources

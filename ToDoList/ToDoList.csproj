@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201904211620067_TaskUpdateModelChanges.Designer.cs">
       <DependentUpon>201904211620067_TaskUpdateModelChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904211745061_UserGuid.cs" />
+    <Compile Include="Migrations\201904211745061_UserGuid.Designer.cs">
+      <DependentUpon>201904211745061_UserGuid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -331,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904211620067_TaskUpdateModelChanges.resx">
       <DependentUpon>201904211620067_TaskUpdateModelChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211745061_UserGuid.resx">
+      <DependentUpon>201904211745061_UserGuid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
