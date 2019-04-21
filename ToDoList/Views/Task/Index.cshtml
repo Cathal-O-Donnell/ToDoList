@@ -54,7 +54,8 @@
                             }
                         </td>
 
-                        <td><span class="btn btn-primary">Edit</span></td>
+                        <td>@Html.ActionLink("Edit", "Edit", new { id = Model.TaskList.ElementAt(i).Id , @class="btn btn-info"})</td>
+
                         <td><span class="btn btn-danger">Delete</span></td>
                         <td>@Html.ActionLink("View", "Detail", new { id = Model.TaskList.ElementAt(i).Id })</td>
                     </tr>

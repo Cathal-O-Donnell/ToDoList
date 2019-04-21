@@ -57,7 +57,26 @@ namespace ToDoList.Controllers
         public ActionResult Edit(int id)
         {
             // Check that the current user is the owner of this task
-            return View();
+            Task task = DBContext.Tasks.SingleOrDefault(t => t.Id == id);
+
+            return View(task);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Task task)
+        {
+            // Get existing record
+            Task taskDb = DBContext.Tasks.Single(t => t.Id == task.Id);
+
+            // Update properties
+            taskDb.Title = task.Title;
+            taskDb.Description = task.Description;
+            taskDb.LastUpdated = DateTime.Now;
+
+            // Save changes
+            DBContext.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Detail(int id)

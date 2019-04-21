@@ -1,0 +1,30 @@
+﻿@model ToDoList.Models.Task
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<div class="container">
+    @using (Html.BeginForm("Edit", "Task"))
+    {
+        @* Id *@
+        @Html.HiddenFor(m => m.Id)
+
+        @*  Title *@
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        </div>
+
+        @*  Description *@
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    }
+</div>
