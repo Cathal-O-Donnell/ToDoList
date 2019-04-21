@@ -27,7 +27,8 @@ textarea {
     margin-top: 25px;
 }
 
-    #tblTask a {
+    #tblTask a,
+    #tblTaskUpdates a {
         text-decoration: none;
     }
 

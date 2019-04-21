@@ -29,24 +29,19 @@ namespace ToDoList.Controllers
             DBContext.Dispose();
         }
 
-        public string UserGuid
+        private string UserGuid
         {
             get
             {
-                string userGuid = User.Identity.GetUserId();
-
-                if (!String.IsNullOrEmpty(userGuid))
-                    return userGuid;
-                else
-                    return "";
+                return User.Identity.GetUserId();
             }
         }
 
         public ActionResult Index()
         {
+            // Get list of tasks for the current user            
             List<Task> taskList = taskService.GetTasksByUser(UserGuid);
 
-            // Get list of tasks for the current user            
             TaskIndexViewModel viewModel = new TaskIndexViewModel()
             {
                 TaskList = taskList
@@ -55,31 +50,12 @@ namespace ToDoList.Controllers
             return View(viewModel);
         }
 
-        public ActionResult NewUpdate(int taskId)
-        {           
-            TaskUpdate newTaskUpdate = new TaskUpdate()
-            {
-                TaskId = taskId
-            };
-
-            return View(newTaskUpdate);
-        }
-
-        [HttpPost]
-        public ActionResult NewUpdate(TaskUpdate taskUpdate)
+        public ActionResult Detail(int id)
         {
-            // Validate model states
-            if (!ModelState.IsValid)
-                return View("NewUpdate", taskUpdate);
+            Task task = taskService.GetTask(id);
+            task.TaskUpdateList = task.TaskUpdateList.OrderBy(tu => tu.RecordCreated).ToList();
 
-            taskService.AddTaskUpdate(taskUpdate);
-
-            // Update Task
-            Task task = taskService.GetTask(taskUpdate.TaskId);
-            taskService.UpdateTask(task);
-
-            // Redirect to the Detail view
-            return RedirectToAction("Detail", new { Id = taskUpdate.TaskId });
+            return View(task);
         }
 
         public ActionResult New()
@@ -90,9 +66,9 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult New(Task newTask)
         {
-            // Validate model states
-            if (!ModelState.IsValid)            
-                return View("New", newTask);            
+            // Validate model state
+            if (!ModelState.IsValid)
+                return View("New", newTask);
 
             newTask.UserGuid = UserGuid;
 
@@ -120,6 +96,33 @@ namespace ToDoList.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult NewUpdate(int taskId)
+        {           
+            TaskUpdate newTaskUpdate = new TaskUpdate()
+            {
+                TaskId = taskId
+            };
+
+            return View(newTaskUpdate);
+        }
+
+        [HttpPost]
+        public ActionResult NewUpdate(TaskUpdate taskUpdate)
+        {
+            // Validate model state
+            if (!ModelState.IsValid)
+                return View("NewUpdate", taskUpdate);
+
+            taskService.AddTaskUpdate(taskUpdate);
+
+            // Update Task
+            Task task = taskService.GetTask(taskUpdate.TaskId);
+            taskService.UpdateTask(task);
+
+            // Redirect to the Detail view
+            return RedirectToAction("Detail", new { Id = taskUpdate.TaskId });
+        } 
+
         public ActionResult EditTaskUpdate(int id)
         {
             TaskUpdate taskUpdate = taskService.GetTaskUpdate(id);
@@ -137,21 +140,7 @@ namespace ToDoList.Controllers
             taskService.UpdateTaskUpdate(taskUpdate);
 
             return RedirectToAction("Detail", new { Id = taskUpdate.TaskId });
-        }
-
-        public ActionResult Detail(int id)
-        {
-            Task task = taskService.GetTask(id);
-            task.TaskUpdateList = task.TaskUpdateList.OrderBy(tu => tu.RecordCreated).ToList();
-
-            return View(task);
-        }
-
-        [HttpPost]
-        public void UpdateTaskCompleteFlag(int taskId, bool isTaskComplete)
-        {
-            taskService.UpdateTaskCompleteFlag(taskId, isTaskComplete);
-        }
+        }                       
 
         [HttpPost]
         public void DeleteTask(int taskId)
@@ -165,6 +154,12 @@ namespace ToDoList.Controllers
             TaskUpdate taskUpdateToDelete = taskService.GetTaskUpdate(taskUpdateId);
 
             taskService.DeleteTaskUpdate(taskUpdateToDelete);
+        }
+
+        [HttpPost]
+        public void UpdateTaskCompleteFlag(int taskId, bool isTaskComplete)
+        {
+            taskService.UpdateTaskCompleteFlag(taskId, isTaskComplete);
         }
 
         [HttpGet]

@@ -16,16 +16,16 @@ namespace ToDoList.DAL.Interfaces
 
         void DeleteTaskUpdate(TaskUpdate taskUpdate);
 
-        List<Task> GetTasksByUser(string userGuid);
-
         Task GetTask(int id);
+
+        List<Task> GetTasksByUser(string userGuid);
 
         TaskUpdate GetTaskUpdate(int taskUpdateId);
 
         void UpdateTask(Task task);
 
-        void UpdateTaskUpdate(TaskUpdate taskUpdate);
-
         void UpdateTaskCompleteFlag(int taskId, bool isTaskComplete);
+
+        void UpdateTaskUpdate(TaskUpdate taskUpdate);
     }
 }
