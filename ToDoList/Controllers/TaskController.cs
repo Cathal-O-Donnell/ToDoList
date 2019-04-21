@@ -45,7 +45,7 @@ namespace ToDoList.Controllers
             TaskUpdate newTaskUpdate = new TaskUpdate()
             {
                 TaskId = taskId
-            };            
+            };
 
             return View(newTaskUpdate);
         }
@@ -53,11 +53,7 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult NewUpdate(TaskUpdate taskUpdate)
         {
-            taskUpdate.RecordCreated = DateTime.Now;
-
-            // Add new task to the Db
-            DBContext.TaskUpdates.Add(taskUpdate);
-            DBContext.SaveChanges();
+            taskService.AddTaskUpdate(taskUpdate);
 
             // Redirect to the Detail view
             return RedirectToAction("Detail", new { Id = taskUpdate.TaskId });
@@ -104,6 +100,20 @@ namespace ToDoList.Controllers
         public void UpdateTaskCompleteFlag(int taskId, bool isTaskComplete)
         {
             taskService.UpdateTaskCompleteFlag(taskId, isTaskComplete);
+        }
+
+        [HttpPost]
+        public void DeleteTask(int taskId)
+        {
+            taskService.DeleteTask(taskId);
+        }
+
+        [HttpPost]
+        public void DeleteTaskUpdate(int taskUpdateId)
+        {
+            TaskUpdate taskUpdateToDelete = taskService.GetTaskUpdate(taskUpdateId);
+
+            taskService.DeleteTaskUpdate(taskUpdateToDelete);
         }
     }
 }

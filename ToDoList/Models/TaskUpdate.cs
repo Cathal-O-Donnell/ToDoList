@@ -13,8 +13,12 @@ namespace ToDoList.Models
 
         public int TaskId { get; set; }
        
+        [Required]
+        [Display(Name = "Update Text")]
+        [StringLength(255)]
         public string UpdateText { get; set; }
 
+        [Display(Name = "Created")]
         public DateTime RecordCreated { get; set; }
 
         public TaskUpdate()

@@ -123,3 +123,4 @@ C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.TaskUpdateListinTaskModel.resources
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.ModelChanges.resources
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csprojAssemblyReference.cache
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.TaskUpdateModelChanges.resources

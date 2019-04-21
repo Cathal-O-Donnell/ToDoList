@@ -59,7 +59,7 @@
                                     <td>@Model.TaskUpdateList.ElementAt(i).UpdateText</td>
                                     <td>@Model.TaskUpdateList.ElementAt(i).RecordCreated.ToString("dd/MM/yyyy")</td>
                                     <td><span class="btn btn-primary">Edit</span></td>
-                                    <td><span class="btn btn-danger">Delete</span></td>
+                                    <td><span class="btn btn-danger" onclick="DeleteTaskUpdate(@Model.TaskUpdateList.ElementAt(i).Id)">Delete</span></td>
                                 </tr>
                             }
                         </tbody>
@@ -85,6 +85,19 @@
             data: { taskId: @Model.Id, isTaskComplete: isTaskComplete },
             success: function (data) {
                 console.log('task successfully updated');
+
+                window.location.reload();
+            }
+        });
+    }
+
+    function DeleteTaskUpdate(taskUpdateId) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("DeleteTaskUpdate", "Task")',
+            data: { taskUpdateId: taskUpdateId },
+            success: function () {
+                console.log('task update successfully deleted');
 
                 window.location.reload();
             }

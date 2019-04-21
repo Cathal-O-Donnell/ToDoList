@@ -10,9 +10,17 @@ namespace ToDoList.DAL.Interfaces
     {
         void AddTask(Task task);
 
+        void AddTaskUpdate(TaskUpdate taskUpdate);
+
+        void DeleteTask(int taskId);
+
+        void DeleteTaskUpdate(TaskUpdate taskUpdate);
+
         List<Task> GetTasksByUser(int userId);
 
         Task GetTask(int id);
+
+        TaskUpdate GetTaskUpdate(int taskUpdateId);
 
         void UpdateTask(Task task);
 

@@ -34,7 +34,6 @@ namespace ToDoList.Models
         public Task()
         {
             IsTaskComplete = false;
-            RecordCreated = DateTime.Now;
             TaskUpdateList = new List<TaskUpdate>();
         }
     }

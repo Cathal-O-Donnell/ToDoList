@@ -18,7 +18,37 @@ namespace ToDoList.DAL.Services
 
         public void AddTask(Task task)
         {
+            task.RecordCreated = DateTime.Now;
+
             DBContext.Tasks.Add(task);
+            DBContext.SaveChanges();
+        }
+
+        public void AddTaskUpdate(TaskUpdate taskUpdate)
+        {
+            taskUpdate.RecordCreated = DateTime.Now;
+
+            DBContext.TaskUpdates.Add(taskUpdate);
+            DBContext.SaveChanges();
+        }
+
+        public void DeleteTask(int taskId)
+        {
+            Task taskToDelete = GetTask(taskId);
+
+            // Delete all task updates for this task
+            for (int i = 0; i < taskToDelete.TaskUpdateList.Count; i++)
+            {
+                DeleteTaskUpdate(taskToDelete.TaskUpdateList.ElementAt(i));
+            }
+
+            DBContext.Tasks.Remove(taskToDelete);
+            DBContext.SaveChanges();
+        }
+
+        public void DeleteTaskUpdate(TaskUpdate taskUpdate)
+        {
+            DBContext.TaskUpdates.Remove(taskUpdate);
             DBContext.SaveChanges();
         }
 
@@ -34,7 +64,18 @@ namespace ToDoList.DAL.Services
 
         public List<Task> GetTasksByUser(int userId)
         {
-            return DBContext.Tasks.Where(t => t.UserId == userId).ToList();
+            List<Task> taskList = DBContext.Tasks.Where(t => t.UserId == userId).ToList();
+
+            foreach (var task in taskList)
+            {
+                task.TaskUpdateList = DBContext.TaskUpdates.Where(tu => tu.TaskId == task.Id).ToList();
+            }
+            return taskList;
+        }
+
+        public TaskUpdate GetTaskUpdate(int taskUpdateId)
+        {
+            return DBContext.TaskUpdates.Single(t => t.Id == taskUpdateId);
         }
 
         public void UpdateTask(Task task)

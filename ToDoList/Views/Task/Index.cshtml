@@ -56,7 +56,8 @@
 
                         <td>@Html.ActionLink("Edit", "Edit", new { id = Model.TaskList.ElementAt(i).Id , @class="btn btn-info"})</td>
 
-                        <td><span class="btn btn-danger">Delete</span></td>
+                        <td><span class="btn btn-danger" onclick="DeleteTask(@Model.TaskList.ElementAt(i).Id)">Delete</span></td>
+
                         <td>@Html.ActionLink("View", "Detail", new { id = Model.TaskList.ElementAt(i).Id })</td>
                     </tr>
                 }
@@ -69,3 +70,19 @@ else
     <h4 class="text-center">Add new taks to see them listed here!</h4>
 }
 
+<script>
+
+    function DeleteTask(taskId) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("DeleteTask", "Task")',
+            data: { taskId: taskId },
+            success: function () {
+                console.log('task successfully deleted');
+
+                window.location.reload();
+            }
+        });
+    }
+
+</script>
