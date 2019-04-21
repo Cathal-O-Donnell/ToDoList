@@ -1,4 +1,3 @@
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.CoreCompileInputs.cache
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\ApplicationInsights.config
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\ToDoList.dll.config
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\ToDoList.dll
@@ -77,6 +76,7 @@ C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\Microsoft.Web.Infrastruct
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\Newtonsoft.Json.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\Owin.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.ValueTuple.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.Web.Helpers.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.Web.Mvc.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.Web.Optimization.dll
@@ -85,6 +85,7 @@ C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.Web.WebPages.Deplo
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.Web.WebPages.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.Web.WebPages.Razor.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\WebGrease.dll
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.ValueTuple.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.Web.Helpers.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.Web.Mvc.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\System.Web.Optimization.xml
@@ -114,14 +115,15 @@ C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\Microsoft.AI.DependencyCo
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\Microsoft.AI.Web.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.CopyComplete
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.dll
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.pdb
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csprojAssemblyReference.cache
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.InitialModel.resources
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.GenerateResource.cache
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.TaskUserId.resources
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.TaskUpdateListinTaskModel.resources
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.ModelChanges.resources
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.TaskUpdateModelChanges.resources
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.UserGuid.resources
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csprojAssemblyReference.cache
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.GenerateResource.cache
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.CoreCompileInputs.cache
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.CopyComplete
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.dll
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.pdb

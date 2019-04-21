@@ -74,7 +74,7 @@ namespace ToDoList.Controllers
 
             taskService.AddTask(newTask);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail", new { newTask.Id });
         }
 
         public ActionResult Edit(int id)
@@ -87,7 +87,7 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult Edit(Task task)
         {
-            // Validate model states
+            // Validate model state
             if (!ModelState.IsValid)
                 return View("Edit", task);
 
