@@ -6,37 +6,44 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@Html.ActionLink("New Task", "New")
 
-<table class="table table-condensed">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Last Updated</th>
-            <th>Created</th>
-            <th>@* Edit button *@</th>
-            <th>@* Delete button *@</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var task in Model.TaskList)
-        {
+@if (Model.TaskList.Any())
+{
+    <table class="table table-condensed">
+        <thead>
             <tr>
-                <td>@task.Title</td>
-                <td>
-                    @if (task.LastUpdated.HasValue)
-                    {
-                        task.LastUpdated.Value.ToString("dd/MM/yyyy hh:mm tt");
-                    }
-                </td>
-                <td>
-                    @task.RecordCreated.ToString("dd/MM/yyyy hh:mm tt");
-                </td>
-                <td><span class="btn btn-primary">Edit</span></td>
-                <td><span class="btn btn-danger">Delete</span></td>
+                <th>Title</th>
+                <th>Last Updated</th>
+                <th>Created</th>
+                <th>@* Edit button *@</th>
+                <th>@* Delete button *@</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+
+        <tbody>
+            @foreach (var task in Model.TaskList)
+            {
+                <tr>
+                    <td>@task.Title</td>
+                    <td>
+                        @if (task.LastUpdated.HasValue)
+                        {
+                            task.LastUpdated.Value.ToString("dd/MM/yyyy hh:mm tt");
+                        }
+                    </td>
+                    <td>
+                        @task.RecordCreated.ToString("dd/MM/yyyy hh:mm tt");
+                    </td>
+                    <td><span class="btn btn-primary">Edit</span></td>
+                    <td><span class="btn btn-danger">Delete</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h4 class="text-center">Add new taks to see them listed here!</h4>
+}
 

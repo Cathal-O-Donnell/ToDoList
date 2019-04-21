@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ToDoList.Models;
+using ToDoList.ViewModels;
 
 namespace ToDoList.Controllers
 {
@@ -25,8 +26,9 @@ namespace ToDoList.Controllers
         public ActionResult Index()
         {
             // Get list of tasks for the current user            
+            TaskIndexViewModel viewModel = new TaskIndexViewModel();
 
-            return View();
+            return View(viewModel);
         }
         
         public ActionResult New()
