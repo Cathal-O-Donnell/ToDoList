@@ -11,6 +11,9 @@
 @if (Model.TaskList.Any())
 {
     <div>
+
+        <h4>Outstanding Tasks <span class="label label-success">@Model.TaskList.Count</span></h4>
+
         <table id="tblTask" class="table table-bordered table-condensed">
             <thead>
                 <tr class="success">

@@ -44,7 +44,7 @@ textarea {
 }
 
 .taskCompleteButton {
-    float: right;
+    text-align: center;
 }
 
 .taskNotComplete {
