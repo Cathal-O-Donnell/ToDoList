@@ -8,11 +8,11 @@ namespace ToDoList.ViewModels
 {
     public class TaskIndexViewModel
     {
-        List<Task> TaskList { get; set; }
+        public List<Models.Task> TaskList { get; set; }
 
         public TaskIndexViewModel()
         {
-            TaskList = new List<Task>();
+            TaskList = new List<Models.Task>();
         }
     }
 }

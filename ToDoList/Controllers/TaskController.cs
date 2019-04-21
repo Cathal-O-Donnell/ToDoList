@@ -24,14 +24,33 @@ namespace ToDoList.Controllers
         // GET: Task
         public ActionResult Index()
         {
-            // Get list of tasks for the current user
+            // Get list of tasks for the current user            
 
             return View();
         }
-
-        public ActionResult TaskDetail(int taskId)
+        
+        public ActionResult New()
         {
-            Task task = DBContext.Tasks.SingleOrDefault(t => t.Id == taskId);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult New(Task newTask)
+        {
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            // Check that the current user is the owner of this task
+            return View();
+        }
+
+        public ActionResult TaskDetail(int id)
+        {
+            // Check that the current user is the owner of this task
+
+            Task task = DBContext.Tasks.SingleOrDefault(t => t.Id == id);
 
             return View(task);
         }
