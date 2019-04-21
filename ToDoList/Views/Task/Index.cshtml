@@ -10,37 +10,58 @@
 
 @if (Model.TaskList.Any())
 {
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Last Updated</th>
-                <th>Created</th>
-                <th>@* Edit button *@</th>
-                <th>@* Delete button *@</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var task in Model.TaskList)
-            {
+    <div>
+        <table id="tblTask" class="table table-bordered table-condensed">
+            <thead>
                 <tr>
-                    <td>@task.Title</td>
-                    <td>
-                        @if (task.LastUpdated.HasValue)
-                        {
-                            task.LastUpdated.Value.ToString("dd/MM/yyyy hh:mm tt");
-                        }
-                    </td>
-                    <td>
-                        @task.RecordCreated.ToString("dd/MM/yyyy hh:mm tt");
-                    </td>
-                    <td><span class="btn btn-primary">Edit</span></td>
-                    <td><span class="btn btn-danger">Delete</span></td>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>No. Of Updates</th>
+                    <th>Last Updated</th>
+                    <th>Created</th>
+                    <th>Complete</th>
+                    <th>@* Edit *@</th>
+                    <th>@* Delete *@</th>
+                    <th>@* Details *@</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+                @for (int i = 0; i < Model.TaskList.Count; i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@Model.TaskList.ElementAt(i).Title</td>
+                        <td>@Model.TaskList.ElementAt(i).TaskUpdateList.Count</td>
+                        <td>
+                            @if (Model.TaskList.ElementAt(i).LastUpdated.HasValue)
+                            {
+                                Model.TaskList.ElementAt(i).LastUpdated.Value.ToString("dd/MM/yyyy");
+                            }
+                        </td>
+                        <td>
+                            @Model.TaskList.ElementAt(i).RecordCreated.ToString("dd/MM/yyyy")
+                        </td>
+
+                        <td>
+                            @if (Model.TaskList.ElementAt(i).IsTaskComplete)
+                            {
+                                <i class="glyphicon glyphicon-ok taskComplete"></i>
+                            }
+                            else
+                            {
+                                <i class="glyphicon glyphicon-remove taskNotComplete"></i>
+                            }
+                        </td>
+
+                        <td><span class="btn btn-primary">Edit</span></td>
+                        <td><span class="btn btn-danger">Delete</span></td>
+                        <td>@Html.ActionLink("View", "Detail", new { id = Model.TaskList.ElementAt(i).Id })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
 else
 {

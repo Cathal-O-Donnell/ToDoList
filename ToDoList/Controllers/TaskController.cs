@@ -60,13 +60,24 @@ namespace ToDoList.Controllers
             return View();
         }
 
-        public ActionResult TaskDetail(int id)
+        public ActionResult Detail(int id)
         {
             // Check that the current user is the owner of this task
 
             Task task = DBContext.Tasks.SingleOrDefault(t => t.Id == id);
 
             return View(task);
+        }
+
+        [HttpPost]
+        public void UpdateTaskCompleteFlag(int taskId, bool isTaskComplete)
+        {
+            Task task = DBContext.Tasks.SingleOrDefault(t => t.Id == taskId);
+
+            task.IsTaskComplete = isTaskComplete;
+            task.LastUpdated = DateTime.Now;
+
+            // update and save changes
         }
     }
 }
