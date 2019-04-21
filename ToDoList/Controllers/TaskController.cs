@@ -7,9 +7,11 @@ using ToDoList.DAL.Interfaces;
 using ToDoList.DAL.Services;
 using ToDoList.Models;
 using ToDoList.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace ToDoList.Controllers
 {
+    [Authorize]
     public class TaskController : Controller
     {
         private ApplicationDbContext DBContext;
@@ -27,9 +29,23 @@ namespace ToDoList.Controllers
             DBContext.Dispose();
         }
 
+        public int UserId
+        {
+            get
+            {
+                string userId = User.Identity.GetUserId();
+
+                if (!String.IsNullOrEmpty(userId))
+                    return Convert.ToInt32(userId);
+                else
+                    return -1;
+            }
+        }
+
         public ActionResult Index()
         {
-            List<Task> taskList = taskService.GetTasksByUser(-1);
+            int userId = Convert.ToInt32(User.Identity.GetUserId());
+            List<Task> taskList = taskService.GetTasksByUser(UserId);
 
             // Get list of tasks for the current user            
             TaskIndexViewModel viewModel = new TaskIndexViewModel()
@@ -75,7 +91,7 @@ namespace ToDoList.Controllers
             if (!ModelState.IsValid)            
                 return View("New", newTask);            
 
-            newTask.UserId = -1;
+            newTask.UserId = UserId;
 
             taskService.AddTask(newTask);
 
