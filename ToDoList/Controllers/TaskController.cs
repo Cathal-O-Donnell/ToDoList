@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ToDoList.DAL.Interfaces;
+using ToDoList.DAL.Services;
 using ToDoList.Models;
 using ToDoList.ViewModels;
 
@@ -12,9 +14,12 @@ namespace ToDoList.Controllers
     {
         private ApplicationDbContext DBContext;
 
+        private ITaskService taskService;
+
         public TaskController()
         {
             DBContext = new ApplicationDbContext();
+            taskService = new TaskService(new ApplicationDbContext());
         }
 
         protected override void Dispose(bool disposing)
@@ -22,18 +27,9 @@ namespace ToDoList.Controllers
             DBContext.Dispose();
         }
 
-        // GET: Task
         public ActionResult Index()
         {
-            List<Task> taskList = new List<Task>();
-
-            taskList = DBContext.Tasks.ToList();
-
-            // Get TaskUpdates
-            foreach (var task in taskList)
-            {
-                task.TaskUpdateList = DBContext.TaskUpdates.Where(t => t.TaskId == task.Id).ToList();
-            }
+            List<Task> taskList = taskService.GetTasksByUser(-1);
 
             // Get list of tasks for the current user            
             TaskIndexViewModel viewModel = new TaskIndexViewModel()
@@ -77,16 +73,14 @@ namespace ToDoList.Controllers
         {
             newTask.UserId = -1;
 
-            DBContext.Tasks.Add(newTask);
-            DBContext.SaveChanges();
+            taskService.AddTask(newTask);
 
             return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
         {
-            // Check that the current user is the owner of this task
-            Task task = DBContext.Tasks.SingleOrDefault(t => t.Id == id);
+            Task task = taskService.GetTask(id);
 
             return View(task);
         }
@@ -94,26 +88,14 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult Edit(Task task)
         {
-            // Get existing record
-            Task taskDb = DBContext.Tasks.Single(t => t.Id == task.Id);
-
-            // Update properties
-            taskDb.Title = task.Title;
-            taskDb.Description = task.Description;
-            taskDb.LastUpdated = DateTime.Now;
-
-            // Save changes
-            DBContext.SaveChanges();
+            taskService.UpdateTask(task);
 
             return RedirectToAction("Index");
         }
 
         public ActionResult Detail(int id)
         {
-            // Check that the current user is the owner of this task
-
-            Task task = DBContext.Tasks.SingleOrDefault(t => t.Id == id);
-            task.TaskUpdateList = DBContext.TaskUpdates.Where(t => t.TaskId == task.Id).ToList();
+            Task task = taskService.GetTask(id);
 
             return View(task);
         }
@@ -121,13 +103,7 @@ namespace ToDoList.Controllers
         [HttpPost]
         public void UpdateTaskCompleteFlag(int taskId, bool isTaskComplete)
         {
-            Task task = DBContext.Tasks.SingleOrDefault(t => t.Id == taskId);
-
-            task.IsTaskComplete = isTaskComplete;
-            task.LastUpdated = DateTime.Now;
-
-            // Save changes
-            DBContext.SaveChanges();
+            taskService.UpdateTaskCompleteFlag(taskId, isTaskComplete);
         }
     }
 }
