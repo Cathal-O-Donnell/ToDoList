@@ -14,7 +14,7 @@
         <div class="panel-body">
             <article>@Model.Description</article>
 
-            <div class="row text-center">
+            <div id="MarkAsCompleteContainer" class="row text-center">
 
                 @if (!Model.IsTaskComplete)
                 {
@@ -22,7 +22,7 @@
                 }
                 else
                 {
-                    <span class="btn btn-warning taskCompleteButton" onclick="MarkTaskComplete(false)">Reopen Task</span>
+                    <span class="btn btn-info taskCompleteButton" onclick="MarkTaskComplete(false)">Reopen Task</span>
                 }
             </div>
         </div>
@@ -68,13 +68,13 @@
     }
 
     function LoadUpdateTable() {
-        console.log('load task update table');
 
         $.ajax({
             type: "GET",
             url: '@Url.Action("TaskUpdateTablePartialView", "Task")',
             data: { taskId: @Model.Id },
             success: function (data) {
+
                 $('#TaskUpdateContainer').html(data);
             }
         });
@@ -87,7 +87,6 @@
             url: '@Url.Action("UpdateTaskCompleteFlag", "Task")',
             data: { taskId: @Model.Id, isTaskComplete: isTaskComplete },
             success: function (data) {
-                console.log('task successfully updated');
 
                 window.location.reload();
             }

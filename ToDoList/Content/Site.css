@@ -67,3 +67,7 @@ textarea {
 .validationText {
     color: #e74c3c;
 }
+
+#MarkAsCompleteContainer {
+    margin-top: 30px;
+}
