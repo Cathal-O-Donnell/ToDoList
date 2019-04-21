@@ -1,0 +1,46 @@
+﻿@model ToDoList.ViewModels.TaskUpdateTableViewModel
+
+@if (Model.TaskUpdateList.Any())
+{
+    <h3>Updates <span class="label label-success">@Model.TaskUpdateList.Count</span></h3>
+}
+
+
+@if (!Model.IsTaskComplete)
+{
+    @Html.ActionLink("Add Update", "NewUpdate", new { taskId = Model.TaskId }, new { @id = "newUpdateLink" })
+}
+
+@if (Model.TaskUpdateList.Any())
+{
+    <div id="tblTaskUpdatesContainer">
+        <table id="tblTaskUpdates" class="table table-bordered table-condensed">
+            <thead>
+                <tr class="success">
+                    <th>#</th>
+                    <th>Update</th>
+                    <th>Created</th>
+                    <th>@* Delete *@</th>
+                    <th>@* Edit *@</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (int i = 0; i < Model.TaskUpdateList.Count; i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@Model.TaskUpdateList.ElementAt(i).UpdateText</td>
+                        <td>@Model.TaskUpdateList.ElementAt(i).RecordCreated.ToString("dd/MM/yyyy")</td>
+                        <td><span class="btn btn-danger" onclick="ConfirmDeleteTaskUpdate(@Model.TaskUpdateList.ElementAt(i).Id)">Delete</span></td>
+                        <td>@Html.ActionLink("Edit", "EditTaskUpdate", new { id = Model.TaskUpdateList.ElementAt(i).Id })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else if (!Model.IsTaskComplete)
+{
+    <h4 class="text-center">Add an update to this task to track your progress!</h4>
+}

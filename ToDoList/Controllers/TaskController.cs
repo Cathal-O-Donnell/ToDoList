@@ -166,5 +166,20 @@ namespace ToDoList.Controllers
 
             taskService.DeleteTaskUpdate(taskUpdateToDelete);
         }
+
+        [HttpGet]
+        public ActionResult TaskUpdateTablePartialView(int taskId)
+        {
+            Task task = taskService.GetTask(taskId);
+
+            TaskUpdateTableViewModel viewModel = new TaskUpdateTableViewModel()
+            {
+                TaskId = task.Id,
+                TaskUpdateList = task.TaskUpdateList,
+                IsTaskComplete = task.IsTaskComplete
+            };
+
+            return PartialView("_TaskUpdateList", viewModel);
+        }
     }
 }

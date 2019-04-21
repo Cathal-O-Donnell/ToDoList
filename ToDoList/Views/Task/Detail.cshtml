@@ -31,55 +31,11 @@
     <div class="row">
         <div id="TaskUpdateContainer" class="col-md-12">
 
-            @if (Model.TaskUpdateList.Any())
-            {
-                <h3>Updates <span class="label label-success">@Model.TaskUpdateList.Count</span></h3>
-            }
-
-
-            @if (!Model.IsTaskComplete)
-            {
-                @Html.ActionLink("Add Update", "NewUpdate", new { taskId = Model.Id }, new { @id = "newUpdateLink" })
-            }
-
-            @if (Model.TaskUpdateList.Any())
-            {
-                <div id="tblTaskUpdatesContainer">
-                    <table id="tblTaskUpdates" class="table table-bordered table-condensed">
-                        <thead>
-                            <tr class="success">
-                                <th>#</th>
-                                <th>Update</th>
-                                <th>Created</th>
-                                <th>@* Delete *@</th>
-                                <th>@* Edit *@</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            @for (int i = 0; i < Model.TaskUpdateList.Count; i++)
-                            {
-                                <tr>
-                                    <td>@(i + 1)</td>
-                                    <td>@Model.TaskUpdateList.ElementAt(i).UpdateText</td>
-                                    <td>@Model.TaskUpdateList.ElementAt(i).RecordCreated.ToString("dd/MM/yyyy")</td>
-                                    <td><span class="btn btn-danger" onclick="ConfirmDeleteTaskUpdate(@Model.TaskUpdateList.ElementAt(i).Id)">Delete</span></td>
-                                    <td>@Html.ActionLink("Edit", "EditTaskUpdate", new { id = Model.TaskUpdateList.ElementAt(i).Id })</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            }
-            else if (!Model.IsTaskComplete)
-            {
-                <h4 class="text-center">Add an update to this task to track your progress!</h4>
-            }
         </div>
     </div>
 </div>
 
-<input id="hfTaskUpdateToDelete" type="hidden" value="-1"/>
+<input id="hfTaskUpdateToDelete" type="hidden" value="-1" />
 
 @* Delete Task Update confirmation modal *@
 <div id='DeleteTaskUpdateConfirmationModal' class='modal'>
@@ -107,6 +63,23 @@
 
 <script>
 
+    window.onload = function () {
+        LoadUpdateTable();
+    }
+
+    function LoadUpdateTable() {
+        console.log('load task update table');
+
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("TaskUpdateTablePartialView", "Task")',
+            data: { taskId: @Model.Id },
+            success: function (data) {
+                $('#TaskUpdateContainer').html(data);
+            }
+        });
+    }
+
     function MarkTaskComplete(isTaskComplete) {
 
         $.ajax({
@@ -123,7 +96,7 @@
 
     function ConfirmDeleteTaskUpdate(taskUpdateId) {
         $('#hfTaskUpdateToDelete').val(taskUpdateId);
-        
+
         $('#DeleteTaskUpdateConfirmationModal').modal('show');
     }
 
@@ -135,7 +108,10 @@
             url: '@Url.Action("DeleteTaskUpdate", "Task")',
             data: { taskUpdateId: taskUpdateId },
             success: function () {
-                window.location.reload();
+
+                $('#DeleteTaskUpdateConfirmationModal').modal('hide');
+
+                LoadUpdateTable();
             }
         });
     }

@@ -122,17 +122,4 @@ else
         });
     }
 
-    function DeleteTaskOLD(taskId) {
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("DeleteTask", "Task")',
-            data: { taskId: taskId },
-            success: function () {
-                console.log('task successfully deleted');
-
-                window.location.reload();
-            }
-        });
-    }
-
 </script>
