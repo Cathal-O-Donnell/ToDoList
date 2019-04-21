@@ -24,6 +24,8 @@ namespace ToDoList.DAL.Interfaces
 
         void UpdateTask(Task task);
 
+        void UpdateTaskUpdate(TaskUpdate taskUpdate);
+
         void UpdateTaskCompleteFlag(int taskId, bool isTaskComplete);
     }
 }

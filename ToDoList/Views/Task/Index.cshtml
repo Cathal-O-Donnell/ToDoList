@@ -13,15 +13,15 @@
     <div>
         <table id="tblTask" class="table table-bordered table-condensed">
             <thead>
-                <tr>
+                <tr class="success">
                     <th>#</th>
                     <th>Title</th>
                     <th>No. Of Updates</th>
                     <th>Last Updated</th>
                     <th>Created</th>
                     <th>Complete</th>
-                    <th>@* Edit *@</th>
                     <th>@* Delete *@</th>
+                    <th>@* Edit *@</th>
                     <th>@* Details *@</th>
                 </tr>
             </thead>
@@ -36,7 +36,7 @@
                         <td>
                             @if (Model.TaskList.ElementAt(i).LastUpdated.HasValue)
                             {
-                                Model.TaskList.ElementAt(i).LastUpdated.Value.ToString("dd/MM/yyyy");
+                                @Model.TaskList.ElementAt(i).LastUpdated.Value.ToString("dd/MM/yyyy hh:mm tt");
                             }
                         </td>
                         <td>
@@ -54,9 +54,9 @@
                             }
                         </td>
 
-                        <td>@Html.ActionLink("Edit", "Edit", new { id = Model.TaskList.ElementAt(i).Id , @class="btn btn-info"})</td>
-
                         <td><span class="btn btn-danger" onclick="DeleteTask(@Model.TaskList.ElementAt(i).Id)">Delete</span></td>
+
+                        <td>@Html.ActionLink("Edit", "Edit", new { id = Model.TaskList.ElementAt(i).Id, @class = "btn btn-info" })</td>
 
                         <td>@Html.ActionLink("View", "Detail", new { id = Model.TaskList.ElementAt(i).Id })</td>
                     </tr>

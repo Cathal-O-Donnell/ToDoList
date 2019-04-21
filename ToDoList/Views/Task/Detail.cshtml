@@ -7,7 +7,7 @@
 
 <div class="container">
     <div class="col-md-6">
-        <h2>@Model.Title - <small>@Model.RecordCreated.ToString("dd/MM/yyyy")</small></h2>
+        <h2>@Model.Title</h2>
     </div>
 
     <div class="col-md-6">
@@ -34,7 +34,7 @@
 
             @if (!Model.IsTaskComplete)
             {
-                @Html.ActionLink("Add Update", "NewUpdate", new { taskId = Model.Id }, new { @id = "newUpdateLink"})
+                @Html.ActionLink("Add Update", "NewUpdate", new { taskId = Model.Id }, new { @id = "newUpdateLink" })
             }
 
             @if (Model.TaskUpdateList.Any())
@@ -42,12 +42,12 @@
                 <div id="tblTaskUpdatesContainer">
                     <table id="tblTaskUpdates" class="table table-bordered table-condensed">
                         <thead>
-                            <tr>
+                            <tr class="success">
                                 <th>#</th>
                                 <th>Update</th>
                                 <th>Created</th>
-                                <th>@* Edit *@</th>
                                 <th>@* Delete *@</th>
+                                <th>@* Edit *@</th>
                             </tr>
                         </thead>
 
@@ -58,8 +58,8 @@
                                     <td>@(i + 1)</td>
                                     <td>@Model.TaskUpdateList.ElementAt(i).UpdateText</td>
                                     <td>@Model.TaskUpdateList.ElementAt(i).RecordCreated.ToString("dd/MM/yyyy")</td>
-                                    <td><span class="btn btn-primary">Edit</span></td>
                                     <td><span class="btn btn-danger" onclick="DeleteTaskUpdate(@Model.TaskUpdateList.ElementAt(i).Id)">Delete</span></td>
+                                    <td>@Html.ActionLink("Edit", "EditTaskUpdate", new { id = Model.TaskUpdateList.ElementAt(i).Id })</td>
                                 </tr>
                             }
                         </tbody>

@@ -74,6 +74,10 @@ namespace ToDoList.Controllers
 
             taskService.AddTaskUpdate(taskUpdate);
 
+            // Update Task
+            Task task = taskService.GetTask(taskUpdate.TaskId);
+            taskService.UpdateTask(task);
+
             // Redirect to the Detail view
             return RedirectToAction("Detail", new { Id = taskUpdate.TaskId });
         }
@@ -107,14 +111,38 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult Edit(Task task)
         {
+            // Validate model states
+            if (!ModelState.IsValid)
+                return View("Edit", task);
+
             taskService.UpdateTask(task);
 
             return RedirectToAction("Index");
         }
 
+        public ActionResult EditTaskUpdate(int id)
+        {
+            TaskUpdate taskUpdate = taskService.GetTaskUpdate(id);
+
+            return View(taskUpdate);
+        }
+
+        [HttpPost]
+        public ActionResult EditTaskUpdate(TaskUpdate taskUpdate)
+        {
+            // Validate model states
+            if (!ModelState.IsValid)
+                return View("EditTaskUpdate", taskUpdate);
+
+            taskService.UpdateTaskUpdate(taskUpdate);
+
+            return RedirectToAction("Detail", new { Id = taskUpdate.TaskId });
+        }
+
         public ActionResult Detail(int id)
         {
             Task task = taskService.GetTask(id);
+            task.TaskUpdateList = task.TaskUpdateList.OrderBy(tu => tu.RecordCreated).ToList();
 
             return View(task);
         }

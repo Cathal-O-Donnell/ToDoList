@@ -99,5 +99,14 @@ namespace ToDoList.DAL.Services
 
             UpdateTask(task);
         }
+
+        public void UpdateTaskUpdate(TaskUpdate taskUpdate)
+        {
+            TaskUpdate taskUpdateInDb = GetTaskUpdate(taskUpdate.Id);
+
+            taskUpdateInDb.UpdateText = taskUpdate.UpdateText;
+
+            DBContext.SaveChanges();
+        }
     }
 }

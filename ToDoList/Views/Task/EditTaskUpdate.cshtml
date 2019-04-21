@@ -8,12 +8,8 @@
 <h2>New Task Update</h2>
 
 <div class="container">
-    @using (Html.BeginForm("NewUpdate", "Task"))
+    @using (Html.BeginForm("EditTaskUpdate", "Task"))
     {
-        @* Id *@
-        @Html.HiddenFor(m => m.Id)
-
-        @* TaskId *@
         @Html.HiddenFor(m => m.TaskId)
 
         @*  Update Text *@
