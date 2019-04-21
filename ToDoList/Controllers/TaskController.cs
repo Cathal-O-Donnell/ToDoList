@@ -29,6 +29,12 @@ namespace ToDoList.Controllers
 
             taskList = DBContext.Tasks.ToList();
 
+            // Get TaskUpdates
+            foreach (var task in taskList)
+            {
+                task.TaskUpdateList = DBContext.TaskUpdates.Where(t => t.TaskId == task.Id).ToList();
+            }
+
             // Get list of tasks for the current user            
             TaskIndexViewModel viewModel = new TaskIndexViewModel()
             {
@@ -37,7 +43,30 @@ namespace ToDoList.Controllers
 
             return View(viewModel);
         }
-        
+
+        public ActionResult NewUpdate(int taskId)
+        {
+            TaskUpdate newTaskUpdate = new TaskUpdate()
+            {
+                TaskId = taskId
+            };            
+
+            return View(newTaskUpdate);
+        }
+
+        [HttpPost]
+        public ActionResult NewUpdate(TaskUpdate taskUpdate)
+        {
+            taskUpdate.RecordCreated = DateTime.Now;
+
+            // Add new task to the Db
+            DBContext.TaskUpdates.Add(taskUpdate);
+            DBContext.SaveChanges();
+
+            // Redirect to the Detail view
+            return RedirectToAction("Detail", new { Id = taskUpdate.TaskId });
+        }
+
         public ActionResult New()
         {
             return View();
@@ -84,6 +113,7 @@ namespace ToDoList.Controllers
             // Check that the current user is the owner of this task
 
             Task task = DBContext.Tasks.SingleOrDefault(t => t.Id == id);
+            task.TaskUpdateList = DBContext.TaskUpdates.Where(t => t.TaskId == task.Id).ToList();
 
             return View(task);
         }
@@ -96,7 +126,8 @@ namespace ToDoList.Controllers
             task.IsTaskComplete = isTaskComplete;
             task.LastUpdated = DateTime.Now;
 
-            // update and save changes
+            // Save changes
+            DBContext.SaveChanges();
         }
     }
 }

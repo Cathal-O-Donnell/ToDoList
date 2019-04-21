@@ -1,0 +1,23 @@
+﻿@model ToDoList.Models.TaskUpdate
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Task Update</h2>
+
+<div class="container">
+    @using (Html.BeginForm("NewUpdate", "Task"))
+    {
+        @Html.HiddenFor(m => m.TaskId)
+
+        @*  Update Text *@
+        <div class="form-group">
+            @Html.LabelFor(m => m.UpdateText)
+            @Html.TextAreaFor(m => m.UpdateText, new { @class = "form-control" })
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    }
+</div>

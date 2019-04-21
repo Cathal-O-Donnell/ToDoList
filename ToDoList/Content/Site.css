@@ -31,6 +31,8 @@ textarea {
         text-decoration: none;
     }
 
+    #tblTaskUpdates th,
+    #tblTaskUpdates td,
     #tblTask td,
     #tblTask th {
         text-align: center;
@@ -51,4 +53,12 @@ textarea {
 
 .taskComplete {
     color: #149c82;
+}
+
+#newUpdateLink {
+    float: right;
+}
+
+#tblTaskUpdatesContainer {
+    margin-top: 25px;
 }
