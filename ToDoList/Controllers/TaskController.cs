@@ -41,7 +41,7 @@ namespace ToDoList.Controllers
         }
 
         public ActionResult NewUpdate(int taskId)
-        {
+        {           
             TaskUpdate newTaskUpdate = new TaskUpdate()
             {
                 TaskId = taskId
@@ -53,6 +53,10 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult NewUpdate(TaskUpdate taskUpdate)
         {
+            // Validate model states
+            if (!ModelState.IsValid)
+                return View("NewUpdate", taskUpdate);
+
             taskService.AddTaskUpdate(taskUpdate);
 
             // Redirect to the Detail view
@@ -67,6 +71,10 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult New(Task newTask)
         {
+            // Validate model states
+            if (!ModelState.IsValid)            
+                return View("New", newTask);            
+
             newTask.UserId = -1;
 
             taskService.AddTask(newTask);

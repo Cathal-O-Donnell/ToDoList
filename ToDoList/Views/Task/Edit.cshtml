@@ -17,12 +17,14 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Title)
             @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Title, null, new { @class = "validationText" })
         </div>
 
         @*  Description *@
         <div class="form-group">
             @Html.LabelFor(m => m.Description)
-            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+            @Html.TextAreaFor(m => m.Description, new { @rows = "5", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Title, null, new { @class = "validationText" })
         </div>
 
         <button type="submit" class="btn btn-success">Save Changes</button>

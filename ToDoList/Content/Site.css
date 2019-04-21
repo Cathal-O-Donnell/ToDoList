@@ -62,3 +62,7 @@ textarea {
 #tblTaskUpdatesContainer {
     margin-top: 25px;
 }
+
+.validationText {
+    color: #e74c3c;
+}
