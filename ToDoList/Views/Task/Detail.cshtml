@@ -12,6 +12,14 @@
             <h3 class="panel-title">@Model.Title</h3>
         </div>
         <div class="panel-body">
+
+            <p>Created: @Model.RecordCreated.ToString("dd/MM/yyyy")</p>
+
+            @if (Model.LastUpdated.HasValue)
+            {
+                <p>Last Updated: @Model.LastUpdated.Value.ToString("dd/MM/yyyy")</p>
+            }
+
             <article>@Model.Description</article>
 
             <div id="MarkAsCompleteContainer" class="row text-center">
