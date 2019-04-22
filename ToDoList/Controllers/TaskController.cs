@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,26 +8,17 @@ using ToDoList.DAL.Interfaces;
 using ToDoList.DAL.Services;
 using ToDoList.Models;
 using ToDoList.ViewModels;
-using Microsoft.AspNet.Identity;
 
 namespace ToDoList.Controllers
 {
     [Authorize]
     public class TaskController : Controller
     {
-        private ApplicationDbContext DBContext;
-
         private ITaskService taskService;
 
         public TaskController()
         {
-            DBContext = new ApplicationDbContext();
             taskService = new TaskService(new ApplicationDbContext());
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            DBContext.Dispose();
         }
 
         private string UserGuid
@@ -97,7 +89,7 @@ namespace ToDoList.Controllers
         }
 
         public ActionResult NewUpdate(int taskId)
-        {           
+        {
             TaskUpdate newTaskUpdate = new TaskUpdate()
             {
                 TaskId = taskId
@@ -121,7 +113,7 @@ namespace ToDoList.Controllers
 
             // Redirect to the Detail view
             return RedirectToAction("Detail", new { Id = taskUpdate.TaskId });
-        } 
+        }
 
         public ActionResult EditTaskUpdate(int id)
         {
@@ -140,7 +132,7 @@ namespace ToDoList.Controllers
             taskService.UpdateTaskUpdate(taskUpdate);
 
             return RedirectToAction("Detail", new { Id = taskUpdate.TaskId });
-        }                       
+        }
 
         [HttpPost]
         public void DeleteTask(int taskId)
