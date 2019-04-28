@@ -12,7 +12,15 @@
 {
     <div>
 
-        <h4>Outstanding Tasks <span class="label label-success">@Model.TaskList.Where(t => !t.IsTaskComplete).Count()</span></h4>
+        <div class="col-md-12">
+            <div class="col-md-3">
+                <h4>Outstanding Tasks <span class="label label-success">@Model.TaskList.Where(t => !t.IsTaskComplete).Count()</span></h4>
+            </div>
+
+            <div class="col-md-3">
+                <h4>Overdue Tasks <span class="label label-danger">@Model.TaskList.Where(t => !t.IsTaskComplete && t.DeadlineDatePassed).Count()</span></h4>
+            </div>
+        </div>
 
         <table id="tblTask" class="table table-bordered table-condensed">
             <thead>
@@ -21,6 +29,7 @@
                     <th>Title</th>
                     <th>No. Of Updates</th>
                     <th>Last Updated</th>
+                    <th>Deadline</th>
                     <th>Created</th>
                     <th>Complete</th>
                     <th>@* Delete *@</th>
@@ -33,19 +42,37 @@
                 @for (int i = 0; i < Model.TaskList.Count; i++)
                 {
                     <tr>
+                        @* # *@
                         <td>@(i + 1)</td>
+
+                        @* Title *@
                         <td>@Model.TaskList.ElementAt(i).Title</td>
+
+                        @* No. of updates *@
                         <td>@Model.TaskList.ElementAt(i).TaskUpdateList.Count</td>
+
+                        @* Last updated *@
                         <td>
                             @if (Model.TaskList.ElementAt(i).LastUpdated.HasValue)
                             {
                                 @Model.TaskList.ElementAt(i).LastUpdated.Value.ToString("dd/MM/yyyy hh:mm tt");
                             }
                         </td>
+
+                        @* Deadline *@
+                        <td class="@(Model.TaskList.ElementAt(i).DeadlineDatePassed? "TaskDeadlinePassed" : "" )">
+                            @if (Model.TaskList.ElementAt(i).DeadlineDate.HasValue)
+                            {
+                                @Model.TaskList.ElementAt(i).DeadlineDate.Value.ToString("dd/MM/yyyy");
+                            }
+                        </td>
+
+                        @* Created *@
                         <td>
                             @Model.TaskList.ElementAt(i).RecordCreated.ToString("dd/MM/yyyy")
                         </td>
 
+                        @* Is complete *@
                         <td>
                             @if (Model.TaskList.ElementAt(i).IsTaskComplete)
                             {
@@ -57,10 +84,13 @@
                             }
                         </td>
 
+                        @* Delete *@
                         <td><span class="btn btn-danger" onclick="ConfirmDeleteTask(@Model.TaskList.ElementAt(i).Id)">Delete</span></td>
 
+                        @* Edit *@
                         <td>@Html.ActionLink("Edit", "Edit", new { id = Model.TaskList.ElementAt(i).Id, @class = "btn btn-info" })</td>
 
+                        @* View *@
                         <td>@Html.ActionLink("View", "Detail", new { id = Model.TaskList.ElementAt(i).Id })</td>
                     </tr>
                 }

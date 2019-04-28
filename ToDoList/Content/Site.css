@@ -71,3 +71,8 @@ textarea {
 #MarkAsCompleteContainer {
     margin-top: 30px;
 }
+
+.TaskDeadlinePassed {
+    color: #C55A4B;
+    font-weight:  bold;
+}

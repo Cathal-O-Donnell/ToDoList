@@ -2,8 +2,11 @@ C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\ApplicationIns
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\ToDoListTests.dll.config
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\ToDoListTests.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\ToDoListTests.pdb
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\EntityFramework.dll
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.Web.Infrastructure.dll
@@ -21,11 +24,12 @@ C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.AspN
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.Owin.Security.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Owin.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\EntityFramework.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\ToDoList.pdb
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\ToDoList.dll.config
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\EntityFramework.xml
+C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\System.Web.Helpers.xml
@@ -40,7 +44,6 @@ C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.AspN
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.Owin.Security.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\EntityFramework.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\obj\Debug\ToDoListTests.csprojAssemblyReference.cache
@@ -48,6 +51,3 @@ C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\obj\Debug\ToDoListTests.
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\obj\Debug\ToDoListTests.csproj.CopyComplete
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\obj\Debug\ToDoListTests.dll
 C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\obj\Debug\ToDoListTests.pdb
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\ToDoListTests.dll.config
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Cathal\Desktop\ToDoList\ToDoList\ToDoListTests\bin\Debug\EntityFramework.SqlServer.xml

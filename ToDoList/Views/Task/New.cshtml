@@ -24,6 +24,25 @@
             @Html.ValidationMessageFor(m => m.Description, null, new { @class = "validationText" })
         </div>
 
+        @* Deadline *@
+        <div class="form-group">
+            @Html.LabelFor(m => m.DeadlineDate)
+            @Html.TextBoxFor(m => m.DeadlineDate, new { @class = "form-control", @id = "txtProductionDate" })
+        </div>
+
         <button type="submit" class="btn btn-success">Create</button>
     }
 </div>
+
+@section scripts {
+
+    <script>
+
+        // Datepicker
+        $('#txtProductionDate').datepicker({
+            format: "dd/mm/yyyy"
+        });
+
+    </script>
+
+}

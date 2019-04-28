@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace ToDoList.Models
 {
-    public class Task
+    public partial class Task
     {
         [Key]
         public int Id { get; set; }
