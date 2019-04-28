@@ -13,11 +13,16 @@
         </div>
         <div class="panel-body">
 
-            <p>Created: @Model.RecordCreated.ToString("dd/MM/yyyy")</p>
+            @if (Model.DeadlineDate.HasValue && !Model.IsTaskComplete)
+            {
+                <p class="@(Model.DeadlineDatePassed? "TaskDeadlinePassed": "")"><span class="font-weight-bold">Deadline:</span> @Model.DeadlineDate.Value.ToString("dd/MM/yyyy")</p>
+            }
+
+            <p><span class="font-weight-bold">Created:</span> @Model.RecordCreated.ToString("dd/MM/yyyy")</p>
 
             @if (Model.LastUpdated.HasValue)
             {
-                <p>Last Updated: @Model.LastUpdated.Value.ToString("dd/MM/yyyy")</p>
+                <p><span class="font-weight-bold">Last Updated:</span> @Model.LastUpdated.Value.ToString("dd/MM/yyyy")</p>
             }
 
             <article>@Model.Description</article>

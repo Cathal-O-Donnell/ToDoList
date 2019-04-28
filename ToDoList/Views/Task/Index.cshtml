@@ -1,6 +1,5 @@
 ﻿@model ToDoList.ViewModels.TaskIndexViewModel
 
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -60,7 +59,7 @@
                         </td>
 
                         @* Deadline *@
-                        <td class="@(Model.TaskList.ElementAt(i).DeadlineDatePassed? "TaskDeadlinePassed" : "" )">
+                        <td class="@(Model.TaskList.ElementAt(i).DeadlineDatePassed? "TaskDeadlinePassed font-weight-bold" : "" )">
                             @if (Model.TaskList.ElementAt(i).DeadlineDate.HasValue)
                             {
                                 @Model.TaskList.ElementAt(i).DeadlineDate.Value.ToString("dd/MM/yyyy");
@@ -129,7 +128,8 @@ else
     </div>
 </div>
 
-<script>
+@section scripts {
+    <script>
 
     function ConfirmDeleteTask(taskUpdateId) {
         $('#hfTaskToDelete').val(taskUpdateId);
@@ -151,4 +151,5 @@ else
         });
     }
 
-</script>
+    </script>
+}

@@ -74,5 +74,8 @@ textarea {
 
 .TaskDeadlinePassed {
     color: #C55A4B;
-    font-weight:  bold;
+}
+
+.font-weight-bold {
+    font-weight: bold;
 }
