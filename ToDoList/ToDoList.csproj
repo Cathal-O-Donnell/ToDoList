@@ -230,6 +230,10 @@
     <Compile Include="Migrations\201904211745061_UserGuid.Designer.cs">
       <DependentUpon>201904211745061_UserGuid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904281024229_Task-Deadline.cs" />
+    <Compile Include="Migrations\201904281024229_Task-Deadline.Designer.cs">
+      <DependentUpon>201904281024229_Task-Deadline.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -344,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904211745061_UserGuid.resx">
       <DependentUpon>201904211745061_UserGuid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904281024229_Task-Deadline.resx">
+      <DependentUpon>201904281024229_Task-Deadline.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -27,6 +27,9 @@ namespace ToDoList.Models
         [Display(Name = "Created")]
         public DateTime RecordCreated { get; set; }
 
+        [Display(Name = "Deadline")]
+        public DateTime?  DeadlineDate { get; set; }
+
         public List<TaskUpdate> TaskUpdateList { get; set; }
 
         public string UserGuid { get; set; }
